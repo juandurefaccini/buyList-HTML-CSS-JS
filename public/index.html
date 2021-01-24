@@ -26,7 +26,7 @@
     </div>
     
 
-    <div class="addProductScreen">
+    <div id="addProductScreen">
       <div class="addProductScreen__name">
 
         <div class="input-group mb-3">
@@ -54,7 +54,7 @@
         </div>
 
       </div>
-      <div class="addProdcutScreen__description">
+      <div class="addProductScreen__description">
 
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Descripcion</label>
@@ -83,14 +83,23 @@
       
     </ul>
 
-    <div id="addButton" class="addProductButton">
-      <button type="button" class="btn btn-success">+</button>
+    <div id="addProductButton">
+      <button onClick=goAddProductScreen() type="button" class="btn btn-success">+</button>
+    </div>
+
+    <div id="productDetails" class="productDetails">
+      <img class="productDetails__img" src="img/icons/product/food.webp" alt="">
+      <h2 class="productDetails__name" >Nombre del producto</h2>
+      <p class="productDetails__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aspernatur ipsum nesciunt distinctio, labore tempora, accusamus aliquid eius iste minus, error sunt doloremque? Doloribus, ratione.</p>
+      <div id="detailButton" class="productDetails__backButton">
+        <button type="button" class="btn btn-success">Atras</button>
+      </div> 
     </div>
 
   </section>
-  <footer class="footer">
+  <!-- <footer class="footer">
     Juan Dure Faccini - 3er reto SummerHack 2020
-  </footer>
+  </footer> -->
 </body>
   <script src="js/main.js"></script>
 </html>
