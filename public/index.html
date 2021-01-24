@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de compras</title>
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <!-- CSS only bootstrap import -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav__elements">
+        <span>Lista de productos</span>
+      </div>
+    </nav>
+  </header>
+  <section>
+    <div id="noItemsMessage" class="sadMessage">
+      <span class="sadMessage__sadFace">:(</span>
+      <span>No hay nada en tu lista <span>todavia</span></span>
+      <span>Pulsa el boton para agregar un elemento a tu lista</span>
+    </div>
+    
+
+    <div class="addProductScreen">
+      <div class="addProductScreen__name">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="append1">Nombre</span>
+          </div>
+          <input type="text" class="form-control" placeholder="nombre del producto" aria-describedby="append1">
+        </div>
+        
+      </div>
+      <div class="addProductScreen__typeSelector">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>elegir...</option>
+            <option value="1">Comida</option>
+            <option value="2">Electrodomestico</option>
+            <option value="3">Mueble</option>
+            <option value="4">Oficina</option>
+            <option value="5">Escuela</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="addProdcutScreen__description">
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Descripcion</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+      </div>
+      <div id="confirmProductButton" class="addProductScreen__confirmButton">
+          <button type="button" class="btn btn-success saveProductButton">AGREGAR</button>
+      </div>
+    </div>
+
+    <!-- Duda: al utilizar BEM, no puedo hacerlo todo id? -->
+    <ul id=product_List class="productList list-group list-group-flush ">
+      
+      <li class="list-group-item">
+        <div class="productList__product">
+          <img src="img/icons/product/food.webp" alt="" class="product__img">
+          <div class="product__name">Product name</div>
+          <div id="detailButton" class="product__detailButton">
+            <button type="button" class="btn btn-success">i</button>
+          </div>
+        </div>
+      </li>
+      
+      
+    </ul>
+
+    <div id="addButton" class="addProductButton">
+      <button type="button" class="btn btn-success">+</button>
+    </div>
+
+  </section>
+  <footer class="footer">
+    Juan Dure Faccini - 3er reto SummerHack 2020
+  </footer>
+</body>
+  <script src="js/main.js"></script>
+</html>
