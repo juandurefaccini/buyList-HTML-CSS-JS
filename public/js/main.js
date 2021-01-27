@@ -10,7 +10,7 @@ var addProductScreen = new bootstrap.Modal(document.getElementById('addProductSc
 const addProductButton = document.getElementById("addProductButton")
 const cancelProductButton = document.getElementById("cancelProductButton")
 const saveProductButton = document.getElementById("saveProductButton")
-const exitProductDetailsScreen = document.getElementById("productDetailsScreen__exitButton")
+const exitProductDetailsScreenButton = document.getElementById("productDetailsScreen__exitButton")
 
 //Campos
 const productDetailsScreen__img = document.getElementById("productDetailsScreen__img")
@@ -33,12 +33,14 @@ var screenWidth = screen.width
 //Boolean para que, en la version web, se pueda cerrar la pantalla de detalles volviendo a apretar el boton
 var detailsScreenActive = false
 
+//Variable para mantener el ultimo producto clickeado
+var lastProduct
+
 //begin
 if(screenWidth < 1024){
         productDetailsScreen.style.display = 'none'
 }else{
         productListScreen.style.display = 'none'
-        exitProductDetailsScreen.style.display = 'none'
 }
 
 let savedProduct = saveProductButton.addEventListener('click', function() {
@@ -52,6 +54,7 @@ let savedProduct = saveProductButton.addEventListener('click', function() {
         productDescriptionField.value = ''
         //Cerrado el modal
         addProductScreen.hide()
+        //nuevo producto
         let newProduct = `<li data-name="${prouctNameInput}" 
                               data-icon="${productTypeSelectInput}" 
                               data-info="${productDescriptionInput}" 
@@ -74,26 +77,36 @@ let savedProduct = saveProductButton.addEventListener('click', function() {
 
 
 function click_product(elem){
-        if(detailsScreenActive == true){
-                productDetailsScreen.style.display = 'none'
-                detailsScreenActive = false
-        }
-        else{
-                if(screenWidth < 1024){
-                        productListScreen.style.display = 'none'
-                        productDetailsScreen.style.display = 'block'
-                }else{                
-                        productDetailsScreen.style.display = 'inline'
-                        detailsScreenActive = true
+        
+        //Si la pantalla es tablet o desktop al momento de pedir mas info
+        if(screenWidth >= 768){
+                // se borra el boton
+                exitProductDetailsScreenButton.style.display = 'none'
+                if(detailsScreenActive){
+                        //Si apreta el MISMO boton devuelta, cierra la pantalla, si no actualiza los datos
+                        if(elem.parentNode == lastProduct){
+                                productDetailsScreen.style.display = 'none'
+                                detailsScreenActive = false 
+                        }
+                }else{
+                        //si la pantalla no esta activa, la abre
+                        productDetailsScreen.style.display = 'block' 
+                        detailsScreenActive = true 
                 }
+        }else{
+                //si al MOMENTO DE INVOCAR es mobile, aparece el boton. Esta asignacion se podria saltear si el usuario durante
+                //la sesion conserva el dispositivo
+                productDetailsScreen.style.display = 'block' 
+                exitProductDetailsScreenButton.style.display = 'block'
         }
-
+        
+        lastProduct = elem.parentNode
         productDetailsScreen__img.src = elem.parentNode.getAttribute('data-icon')
         productDetailsScreen__name.innerHTML = elem.parentNode.getAttribute('data-name')
         productDetailsScreen__description.innerHTML = elem.parentNode.getAttribute('data-info')
 }
 
-exitProductDetailsScreen.addEventListener('click',function (){
+exitProductDetailsScreenButton.addEventListener('click',function (){
         productDetailsScreen.style.display = 'none'
         productListScreen.style.display = 'block'
 })

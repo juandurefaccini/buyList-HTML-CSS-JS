@@ -19,8 +19,10 @@ body{
 }
 
 nav{
+        display: flex;
         background-color: var(--color2);
         text-align: center;
+        justify-content: center;
         padding: 20px;
 }
 
