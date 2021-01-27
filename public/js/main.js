@@ -25,7 +25,22 @@ let productDescriptionField = document.getElementById("productDescription")
 //List
 let productList = document.getElementById("productListScreen__list")
 
+//Listener de resolucion
+var isDesktop = window.matchMedia("(min-width: 1024px)")
+var isTablet = window.matchMedia("(min-width: 768px)")
+var screenWidth = screen.width
+
+//Boolean para que, en la version web, se pueda cerrar la pantalla de detalles volviendo a apretar el boton
+var detailsScreenActive = false
+
 //begin
+if(screenWidth < 1024){
+        productDetailsScreen.style.display = 'none'
+}else{
+        productListScreen.style.display = 'none'
+        exitProductDetailsScreen.style.display = 'none'
+}
+
 let savedProduct = saveProductButton.addEventListener('click', function() {
         //Inputs
         let prouctNameInput= prouctNameField.value
@@ -52,14 +67,27 @@ let savedProduct = saveProductButton.addEventListener('click', function() {
                                 </button>
                           </li>`
         productList.innerHTML += newProduct
-        noItemsScreen.style.display = 'none'
+        //desktop
         productListScreen.style.display = 'block'
+        noItemsScreen.style.display = 'none'
 })
 
 
 function click_product(elem){
-        productListScreen.style.display = 'none'
-        productDetailsScreen.style.display = 'block'
+        if(detailsScreenActive == true){
+                productDetailsScreen.style.display = 'none'
+                detailsScreenActive = false
+        }
+        else{
+                if(screenWidth < 1024){
+                        productListScreen.style.display = 'none'
+                        productDetailsScreen.style.display = 'block'
+                }else{                
+                        productDetailsScreen.style.display = 'inline'
+                        detailsScreenActive = true
+                }
+        }
+
         productDetailsScreen__img.src = elem.parentNode.getAttribute('data-icon')
         productDetailsScreen__name.innerHTML = elem.parentNode.getAttribute('data-name')
         productDetailsScreen__description.innerHTML = elem.parentNode.getAttribute('data-info')
@@ -70,3 +98,4 @@ exitProductDetailsScreen.addEventListener('click',function (){
         productListScreen.style.display = 'block'
 })
 //end
+

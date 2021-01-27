@@ -6,17 +6,22 @@
 }
 
 html{
+        /* background-image: url("../img/paper_background.jpg");
+        background-repeat: repeat;  */
         font-size: 20px;
+        height: -webkit-fill-available;
 }
 
 body{
         margin: 0;
+        height: 100vh;
+        background-color: var(--color1);
 }
 
 nav{
         background-color: var(--color2);
         text-align: center;
-        padding: 2vh;
+        padding: 20px;
 }
 
 #productDetailsScreen{
@@ -30,7 +35,7 @@ nav{
 }
 
 #addProductButton{
-        position: absolute;
+        position: fixed;
         bottom: 25px;
         right: 25px;
         height: 50px;
@@ -38,11 +43,13 @@ nav{
         border-radius: 50%;
 }
 
-
 #productDetailsScreen{
-        position: relative;
+        position: absolute;
         padding: 20px;
-        height: 100vh;
+        bottom: 0;
+        top: 70px;
+        left: 0;
+        right: 0;
         background-color: var(--color4);
 }
 
@@ -56,19 +63,23 @@ nav{
 #productDetailsScreen__img{
         width: 200px;
         display: block;
+        margin-top: 5vh;
         margin-left: auto;
         margin-right: auto;
 }
 
 #productDetailsScreen__name{
         margin-left: 25px;
+        margin-top: 5vh;
 }
 
 #productDetailsScreen__description{
+        margin-top: 5vh;
         margin-left: 25px;
 }
 
 #productListScreen{
+
         display: block;
 }
 
@@ -96,4 +107,61 @@ nav{
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         border-radius: 50%;
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px){
+        #cont{
+                position: relative;
+                display: flex;
+                height: 100vh;
+                margin: 0;
+                justify-content: space-between;
+        }
+        #noItemsScreen{
+                flex-basis: 100%;
+                height: 100vh;
+        }
+        
+        #productListScreen{
+                flex-basis: 50vw;
+                margin: 50px 0;
+        }
+
+        .productListScreen__item{
+                margin-left: 25px;
+                margin-right: 25px;
+                padding: 10px;
+                width: 90%;
+        }
+        
+        .productListScreen__img{
+                justify-content: baseline;
+                display: inline;
+                width: 60px;
+        }
+        
+        .productListScreen__name{
+                margin-left: 25px;
+                display: inline;
+                width: 75px;
+        }
+        
+        
+        #productDetailsScreen{
+                position: absolute;
+                padding: 0;
+                /* height: 100vh; */
+                /* height: fit-content; */
+                /* bottom: 0; */
+                top: 0;
+                left: 50%;
+                right: 0;
+                background-color: var(--color4);
+        }
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px){
+
 }
