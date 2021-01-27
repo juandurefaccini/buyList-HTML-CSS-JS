@@ -4,102 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de compras</title>
-  <link rel="stylesheet" href="css/style.css">
-
-
+  
+  
   <!-- CSS only bootstrap import -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <header>
     <nav class="nav">
-      <div class="nav__elements">
         <span>Lista de productos</span>
-      </div>
     </nav>
   </header>
-  <section>
-    <div id="noItemsMessage" class="sadMessage">
-      <span class="sadMessage__sadFace">:(</span>
-      <span>No hay nada en tu lista <span>todavia</span></span>
-      <span>Pulsa el boton para agregar un elemento a tu lista</span>
-    </div>
-    
 
-    <div id="addProductScreen">
-      <div class="addProductScreen__name">
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="append1">Nombre</span>
-          </div>
-          <input type="text" class="form-control" placeholder="nombre del producto" aria-describedby="append1">
-        </div>
-        
-      </div>
-      <div class="addProductScreen__typeSelector">
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>elegir...</option>
-            <option value="1">Comida</option>
-            <option value="2">Electrodomestico</option>
-            <option value="3">Mueble</option>
-            <option value="4">Oficina</option>
-            <option value="5">Escuela</option>
-          </select>
-        </div>
-
-      </div>
-      <div class="addProductScreen__description">
-
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Descripcion</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-      </div>
-      <div id="confirmProductButton" class="addProductScreen__confirmButton">
-          <button type="button" class="btn btn-success saveProductButton">AGREGAR</button>
-      </div>
-    </div>
-
-    <!-- Duda: al utilizar BEM, no puedo hacerlo todo id? -->
-    <ul id=product_List class="productList list-group list-group-flush ">
-      
-      <li class="list-group-item">
-        <div class="productList__product">
-          <img src="img/icons/product/food.webp" alt="" class="product__img">
-          <div class="product__name">Product name</div>
-          <div id="detailButton" class="product__detailButton">
-            <button type="button" class="btn btn-success">i</button>
-          </div>
-        </div>
-      </li>
-      
-      
-    </ul>
-
-    <div id="addProductButton">
-      <button onClick=goAddProductScreen() type="button" class="btn btn-success">+</button>
-    </div>
-
-    <div id="productDetails" class="productDetails">
-      <img class="productDetails__img" src="img/icons/product/food.webp" alt="">
-      <h2 class="productDetails__name" >Nombre del producto</h2>
-      <p class="productDetails__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aspernatur ipsum nesciunt distinctio, labore tempora, accusamus aliquid eius iste minus, error sunt doloremque? Doloribus, ratione.</p>
-      <div id="detailButton" class="productDetails__backButton">
-        <button type="button" class="btn btn-success">Atras</button>
-      </div> 
-    </div>
-
+  <!-- Mensaje de no hay productos :( -->
+  <section id="noItemsScreen">
+      <p>No hay elementos</p>
   </section>
-  <!-- <footer class="footer">
-    Juan Dure Faccini - 3er reto SummerHack 2020
-  </footer> -->
+
+  <!-- Button trigger modal -->
+  <button id="addProductButton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductScreen">
+    +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addProductScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="prouctNameTextField" aria-describedby="emailHelp" placeholder="Nombre del producto">
+            <label for="prouctNameTextField">Nombre producto</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <select id="productTypeSelect" class="form-select">
+              <option value="img/icons/basket.svg">Otro</option>
+              <option value="img/icons/bread.svg">Panaderia</option>
+              <option value="img/icons/cheeses.svg">Quesos</option>
+              <option value="img/icons/vegetable.svg">Vegetales</option>
+              <option value="img/icons/electronic.svg">Electronica</option>
+              <option value="img/icons/meat.svg">Carne</option>
+              <option value="img/icons/milk.svg">Lacteos</option>
+            </select>
+            <label for="productTypeSelect" class="form-label">Tipo de producto</label>
+          </div>
+
+          <div class="form-floating">
+            <textarea class="form-control" id="productDescription" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Descripccion</label>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button id="cancelProductButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="saveProductButton" type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de productos -->
+  <section id="productListScreen">
+    <ul id="productListScreen__list" class="list-group">
+    </ul>
+  </section>
+
+  <section id="productDetailsScreen">
+    <button id="productDetailsScreen__exitButton" type="button" class="btn btn-danger">x</button>
+    <img id="productDetailsScreen__img" src="img/icons/basket.svg" alt="">
+    <h2 id="productDetailsScreen__name">Hamburguesa</h2>
+    <p id="productDetailsScreen__description">lorem50</p>
+  </section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </html>
