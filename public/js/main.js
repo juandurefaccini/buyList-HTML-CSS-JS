@@ -31,30 +31,42 @@ let savedProduct = saveProductButton.addEventListener('click', function() {
         let prouctNameInput= prouctNameField.value
         let productTypeSelectInput = productTypeSelectField.value
         let productDescriptionInput = productDescriptionField.value
+        //Borrado de campos
         prouctNameField.value = ''
         productTypeSelectField.selectedIndex = 0
         productDescriptionField.value = ''
+        //Cerrado el modal
         addProductScreen.hide()
-        // let newProduct = `<li class="list-group-item"><img src="${productTypeSelectInput}" alt="${prouctNameInput}"><p> ${prouctNameInput} </p></li>`
-        let newProduct = `<li data-name="${prouctNameInput}" data-icon="${productTypeSelectInput}" data-info="${productDescriptionInput}" class="list-group-item productListScreen__item" ><img class="productListScreen__img" src="${productTypeSelectInput}" alt="${prouctNameInput}"><p class="productListScreen__name">${prouctNameInput}</p><button type="button" class="btn btn-success productListScreen__detailButton">i</button></li>`
+        let newProduct = `<li data-name="${prouctNameInput}" 
+                              data-icon="${productTypeSelectInput}" 
+                              data-info="${productDescriptionInput}" 
+                              class="list-group-item productListScreen__item" >
+                                <img class="productListScreen__img" 
+                                     src="${productTypeSelectInput}" 
+                                     alt="${prouctNameInput}">
+                                <p class="productListScreen__name">${prouctNameInput}</p>
+                                <button onclick="click_product(this)" 
+                                        type="button" 
+                                        class="btn btn-success" 
+                                        id="productListScreen__detailButton">i
+                                </button>
+                          </li>`
         productList.innerHTML += newProduct
         noItemsScreen.style.display = 'none'
         productListScreen.style.display = 'block'
 })
 
 
-//todo revisar
-let getDetails = productListScreen.addEventListener('click',function(e){
+function click_product(elem){
         productListScreen.style.display = 'none'
         productDetailsScreen.style.display = 'block'
-        // let clickedProduct = e.target.getAttribute('data-info')
-        productDetailsScreen__img.src = e.target.getAttribute('data-icon')
-        productDetailsScreen__name.innerHTML = e.target.getAttribute('data-name')
-        productDetailsScreen__description.innerHTML = e.target.getAttribute('data-info')
-})
+        productDetailsScreen__img.src = elem.parentNode.getAttribute('data-icon')
+        productDetailsScreen__name.innerHTML = elem.parentNode.getAttribute('data-name')
+        productDetailsScreen__description.innerHTML = elem.parentNode.getAttribute('data-info')
+}
 
 exitProductDetailsScreen.addEventListener('click',function (){
         productDetailsScreen.style.display = 'none'
-        productListScreen.style.display = 
+        productListScreen.style.display = 'block'
 })
 //end

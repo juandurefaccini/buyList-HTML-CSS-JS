@@ -42,7 +42,7 @@ nav{
 #productDetailsScreen{
         position: relative;
         padding: 20px;
-        /* height: 100vh; */
+        height: 100vh;
         background-color: var(--color4);
 }
 
