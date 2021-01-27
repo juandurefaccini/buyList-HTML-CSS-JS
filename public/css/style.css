@@ -3,8 +3,17 @@
         --color2: #11698e;
         --color3: #19456b;
         --color4: #16c79a;
+        --color5: #8DE3AF;
 }
 
+/* :root{
+        --color1: #05396B;
+        --color2: #389583;
+        --color3: #5CDB94;
+        --color4: #8DE3AF;
+        --color5: #EDF5E0;
+} */
+        
 html{
         /* background-image: url("../img/paper_background.jpg");
         background-repeat: repeat;  */
@@ -15,15 +24,25 @@ html{
 body{
         margin: 0;
         height: 100vh;
-        background-color: var(--color1);
+        background-color: var(--color4);
+}
+
+header{
+        padding: 20px;
+        background-color: var(--color2);
 }
 
 nav{
+        color: var(--color5);
+        font-size: 20px;
+        font-style: bol;
         display: flex;
-        background-color: var(--color2);
-        text-align: center;
         justify-content: center;
-        padding: 20px;
+}
+
+nav strong{
+        text-align: center;
+        align-content: center;
 }
 
 #productDetailsScreen{
@@ -34,6 +53,15 @@ nav{
         text-align: center;
         padding: 70px;
         font-size: 40px;
+}
+
+#noItemsScreen p:nth-child(1){
+        color: #11698e;
+        text-transform: uppercase;
+}
+
+#noItemsScreen p:nth-child(2){
+        font-size: 10rem;
 }
 
 #addProductButton{
@@ -52,7 +80,7 @@ nav{
         top: 70px;
         left: 0;
         right: 0;
-        background-color: var(--color4);
+        background-color: var(--color3);
 }
 
 #productDetailsScreen__exitButton{
@@ -86,6 +114,7 @@ nav{
 }
 
 .productListScreen__item{
+        background-color: var(--color5);
         display: block;
         padding: 10px;
         position: relative;
@@ -149,17 +178,12 @@ nav{
                 width: 75px;
         }
         
-        
         #productDetailsScreen{
                 position: absolute;
                 padding: 0;
-                /* height: 100vh; */
-                /* height: fit-content; */
-                /* bottom: 0; */
                 top: 0;
                 left: 50%;
                 right: 0;
-                background-color: var(--color4);
         }
 }
 

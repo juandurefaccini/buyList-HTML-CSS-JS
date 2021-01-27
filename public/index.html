@@ -35,12 +35,14 @@
   <meta name="twitter:image"                  content="https://lista-compras-reto-semanal-3.web.app/img/splash.jpg">
   
   <!--
-  _____ _____            _____ _____           _____ 
-  / ____|  __ \     /\   / ____|_   _|   /\    / ____|
- | |  __| |__) |   /  \ | |      | |    /  \  | (___  
- | | |_ |  _  /   / /\ \| |      | |   / /\ \  \___ \ 
- | |__| | | \ \  / ____ \ |____ _| |_ / ____ \ ____) |
-  \_____|_|  \_\/_/    \_\_____|_____/_/    \_\_____/  jony por armar ese video salvador
+    _____ _____            _____ _____           _____              _  ____  _   ___     __
+  / ____|  __ \     /\   / ____|_   _|   /\    / ____|            | |/ __ \| \ | \ \   / /
+ | |  __| |__) |   /  \ | |      | |    /  \  | (___              | | |  | |  \| |\ \_/ / 
+ | | |_ |  _  /   / /\ \| |      | |   / /\ \  \___ \         _   | | |  | | . ` | \   /  
+ | |__| | | \ \  / ____ \ |____ _| |_ / ____ \ ____) |       | |__| | |__| | |\  |  | |   
+  \_____|_|  \_\/_/    \_\_____|_____/_/    \_\_____/         \____/ \____/|_| \_|  |_|   
+                                                                                          
+                                                                                           por armar ese video salvador
 
               _            
              | |           
@@ -50,8 +52,9 @@
  |_| |_|\___/ \__\__,_|___/
                            
                            
-  -> Cuando pasas a la version desktop la forma de cerrar la info es apretando devuelta el boton verde de info, me parecio mas apropiado
+  -> Cuando pasas a la version desktop la forma de cerrar la info es apretando devuelta el boton verde de info, me parecio mas apropiado, pero me costo bastante hacerlo (googlee bastante)
   -> no use mediaquerys de tablet, ya quedaba bien bajo mi criterio
+  -> moviendo la pantalla se bugea el responsive en lo que respecta al boton, si se hace desde el cambio de las herramientas de desarrollador web no 
    _____ ____  _   _  _____ _    _ _   _______        _____ 
   / ____/ __ \| \ | |/ ____| |  | | | |__   __|/\    / ____|
  | |   | |  | |  \| | (___ | |  | | |    | |  /  \  | (___  
@@ -59,32 +62,28 @@
  | |___| |__| | |\  |____) | |__| | |____| |/ ____ \ ____) |
   \_____\____/|_| \_|_____/ \____/|______|_/_/    \_\_____/  :
 
-
-
   Querido jony, me quedaron las siguientes dudas:
-    -> Tengo problemas con hacer que entre el nav y el section "de turno" ocupen 100vh, iba a meter el header y el section adentro de un div
-  pero estoy bastante seguro que eso esta mal, lo termine resolviendolo de una forma que me parece medio hardoceada, con absolute, vos podes
-  tirarme un centro de como lo harias?
-    -> Al momento de armar la version web use un div que encierra a las pantallas, estoy como un 90% seguro que esta mal, pero me gustaria saber como lo resolviste vos
-    -> Por que en el video todas las veces que agregas un listener los almacenas en una variable/constante?
-
+    -> Al momento de armar la version web use un div que encierra a las pantallas para pasar a flex, estoy como un 90% seguro que esta mal, pero me gustaria saber como lo resolverias vos
+    -> Por que en el video todas las veces que agregas un listener los almacenas en un let?
+    -> no pude hacer para que tenga valores por defecto al cargar producto, en caso de que no cargue datos
+    -> Que esquema habia que usar? si habia que usar algun esquema... (puse uno en el header por tirar algo)
   -->                                                          
                                                             
-
 
 </head>
 <body>
 
   <header>
     <nav class="nav">
-        <span>Tu papelito del supermercado</span>
+        <strong itemprop="name">Tu papelito del supermercado</strong>
     </nav>
   </header>
+  
+  <div id="cont"> <!-- leer consulta 1 -->
 
-  <div id="cont">
-    <!-- Mensaje de no hay productos :( -->
     <section id="noItemsScreen">
-        <p>No hay elementos</p>
+        <p><strong>No tenes nada para mostrar</strong></p>
+        <p>🛒</p>
     </section>
 
     <!-- Modal -->
